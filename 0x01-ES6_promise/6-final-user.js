@@ -8,11 +8,13 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
   ]).then((responses) => {
     const values = [];
     for (const response of responses) {
-      values.push({
-        response: response.status,
-        value: response.value,
-      });
+      if (response.status === 'fulfilled') {
+        values.push({ status: response.status, value: response.value });
+      } else {
+        values.push({ status: response.status, value: response.reason });
+      }
     }
+    console.log(values);
     return values;
   });
 }
