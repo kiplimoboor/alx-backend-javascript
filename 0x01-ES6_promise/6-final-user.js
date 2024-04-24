@@ -6,15 +6,14 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
     signUpUser(firstName, lastName),
     uploadPhoto(fileName),
   ]).then((responses) => {
-    const values = [];
+    const value = [];
     for (const response of responses) {
-      if (response.status === 'fulfilled') {
-        values.push({ status: response.status, value: response.value });
+      if (response.status !== 'fulfilled') {
+        value.push({ status: response.status, value: `${response.reason}` });
       } else {
-        values.push({ status: response.status, value: response.reason });
+        value.push({ status: response.status, value: response.value });
       }
     }
-    console.log(values);
-    return values;
+    return value;
   });
 }
