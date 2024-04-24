@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 export default function getResponseFromAPI() {
-  return new Promise();
+  const promise = new Promise((resolve, reject) => {
+    resolve('Hello');
+  });
+  return promise;
 }
-
-const response = getResponseFromAPI();
-console.log(response instanceof Promise);
