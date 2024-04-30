@@ -1,5 +1,11 @@
+/* eslint-disable operator-linebreak */
 export default function cleanSet(set, startString) {
-  if (!startString) {
+  if (
+    !set ||
+    !startString ||
+    !(set instanceof Set) ||
+    typeof startString !== 'string'
+  ) {
     return '';
   }
 
