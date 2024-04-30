@@ -1,9 +1,16 @@
 /* eslint-disable operator-linebreak */
 export default function cleanSet(set, startString) {
-  if (startString.length === 0 || startString === undefined) return '';
+  if (
+    !set ||
+    !(set instanceof Set) ||
+    startString.length === 0 ||
+    startString === undefined
+  ) {
+    return '';
+  }
 
   return [...set]
-    .filter((i) => (i !== undefined ? i.startsWith(startString) : ''))
-    .map((i) => (i !== undefined ? i.slice(startString.length) : ''))
+    .filter((item) => (item !== undefined ? item.startsWith(startString) : ''))
+    .map((str) => (str !== undefined ? str.slice(startString.length) : ''))
     .join('-');
 }
