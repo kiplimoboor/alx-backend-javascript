@@ -4,7 +4,8 @@ export default function cleanSet(set, startString) {
     !set ||
     !(set instanceof Set) ||
     startString.length === 0 ||
-    startString === undefined
+    startString === undefined ||
+    typeof startString !== 'string'
   ) {
     return '';
   }
