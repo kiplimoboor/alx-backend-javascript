@@ -1,17 +1,14 @@
 /* eslint-disable operator-linebreak */
 export default function cleanSet(set, startString) {
   if (
-    !set ||
     !(set instanceof Set) ||
-    startString.length === 0 ||
-    startString === undefined ||
-    typeof startString !== 'string'
+    typeof startString !== 'string' ||
+    startString.length === 0
   ) {
     return '';
   }
-
-  return [...set]
-    .filter((item) => (item !== undefined ? item.startsWith(startString) : ''))
-    .map((str) => (str !== undefined ? str.slice(startString.length) : ''))
+  return Array.from(set)
+    .filter((word) => word.includes(startString))
+    .map((word) => word.substring(startString.length))
     .join('-');
 }
