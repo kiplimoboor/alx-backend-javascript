@@ -9,11 +9,18 @@ function countStudents(path) {
       .split('\n')
       .slice(1);
 
-    const groupedStudents = { SWE: [], CS: [] };
+    const groupedStudents = {};
 
     for (let student of students) {
       student = student.split(',');
-      groupedStudents[student[3]].push(student[0]);
+      const firstName = student[0];
+      const course = student[3];
+
+      if (!groupedStudents.hasOwnProperty(course)) {
+        groupedStudents[course] = [firstName];
+      } else {
+        groupedStudents[course].push(firstName);
+      }
     }
 
     console.log('Number of students: ' + students.length);
@@ -21,7 +28,7 @@ function countStudents(path) {
     for (const group in groupedStudents) {
       const studentsInGroup = groupedStudents[group];
       console.log(
-        `Number of students in ${group}: ${studentsInGroup.length}. List: ${studentsInGroup.join(',')}`
+        `Number of students in ${group}: ${studentsInGroup.length}. List: ${studentsInGroup.join(', ')}`
       );
     }
   } catch (e) {
