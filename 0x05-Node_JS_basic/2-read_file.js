@@ -7,22 +7,18 @@ const fs = require('fs');
 /*
  * countStudents - reads file in sync, and print student details
  *                Also print students based on group
- *
  * @path: the file path
- *
  * Return: Nothing
  */
 function countStudents(fileName) {
   try {
     const content = fs.readFileSync(fileName, 'utf-8').toString();
     const students = content.trim().split('\n').slice(1);
-
     const studentsByCourse = {};
     students.map((student) => {
       const studentInfo = student.split(',');
       const course = studentInfo[3];
       const firstName = studentInfo[0];
-
       if (Object.prototype.hasOwnProperty.call(studentsByCourse, course)) {
         studentsByCourse[course].push(firstName);
       } else {
@@ -31,9 +27,7 @@ function countStudents(fileName) {
 
       return 0;
     });
-
     console.log(`Number of students: ${students.length}`);
-
     for (const course in studentsByCourse) {
       const students = studentsByCourse[course];
       console.log(
@@ -44,5 +38,4 @@ function countStudents(fileName) {
     throw Error('Cannot load the database');
   }
 }
-
 module.exports = countStudents;
