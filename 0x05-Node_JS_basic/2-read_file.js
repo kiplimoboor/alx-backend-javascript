@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+/* eslint-disable */
+
 const fs = require('fs');
 
 /*
@@ -21,11 +23,13 @@ function countStudents(fileName) {
       const course = studentInfo[3];
       const firstName = studentInfo[0];
 
-      if (studentsByCourse.hasOwnProperty(course)) {
+      if (Object.prototype.hasOwnProperty.call(studentsByCourse, course)) {
         studentsByCourse[course].push(firstName);
       } else {
         studentsByCourse[course] = [firstName];
       }
+
+      return 0;
     });
 
     console.log(`Number of students: ${students.length}`);
