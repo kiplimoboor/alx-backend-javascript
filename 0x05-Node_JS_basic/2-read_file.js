@@ -24,8 +24,6 @@ function countStudents(fileName) {
       } else {
         studentsByCourse[course] = [firstName];
       }
-
-      return 0;
     });
     console.log(`Number of students: ${students.length}`);
     for (const course in studentsByCourse) {
