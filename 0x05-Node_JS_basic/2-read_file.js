@@ -14,10 +14,10 @@ function countStudents(path) {
       const studentDetails = student.split(',');
       const [firstName, course] = [studentDetails[0], studentDetails[3]];
 
-      if (groupedStudents.hasOwnProperty(course) === false) {
-        groupedStudents[course] = [firstName];
-      } else {
+      if (Object.hasOwnProperty.call(groupedStudents, course)) {
         groupedStudents[course].push(firstName);
+      } else {
+        groupedStudents[course] = [firstName];
       }
     });
     for (const course in groupedStudents) {
