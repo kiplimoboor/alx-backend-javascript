@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-const fs = require('node:fs');
+const fs = require('fs');
 
 function countStudents(path) {
   try {
