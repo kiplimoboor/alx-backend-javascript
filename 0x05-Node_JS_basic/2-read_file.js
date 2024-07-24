@@ -4,8 +4,8 @@ const fs = require('node:fs');
 
 function countStudents(path) {
   try {
-    const data = fs.readFileSync(path);
-    const content = data.toString('utf8').trim().split('\n').slice(1);
+    const data = fs.readFileSync(path, 'utf-8');
+    const content = data.trim().split('\n').slice(1);
 
     console.log(`Number of students: ${content.length}`);
 
@@ -20,10 +20,10 @@ function countStudents(path) {
         groupedStudents[course] = [firstName];
       }
     });
-    for (const course in groupedStudents) {
-      const courseStudents = groupedStudents[course];
+
+    for (const [key, value] of Object.entries(groupedStudents)) {
       console.log(
-        `Number of students in ${course}: ${courseStudents.length}. List: ${courseStudents.join(', ')}`
+        `Number of students in ${key}: ${value.length}. List: ${value.join(', ')}`
       );
     }
   } catch (err) {
