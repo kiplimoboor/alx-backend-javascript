@@ -4,7 +4,8 @@
   "description": "alx assignment for js unittests",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "lint": "./node_modules/.bin/eslint"
   },
   "author": "kiplimoboor",
   "license": "ISC",
