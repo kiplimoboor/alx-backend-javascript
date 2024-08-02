@@ -17,7 +17,7 @@ describe('Cart page', () => {
   it('returns correct response for valid id', (done) => {
     request.get(`${URL}/cart/693`, (err, res, body) => {
       expect(res.statusCode).to.equal(200);
-      expect(body).to.include('693');
+      expect(body).to.equal('Payment methods for cart 693');
       done();
     });
   });
@@ -32,7 +32,7 @@ describe('Cart page', () => {
   it('returns a 404 for a string id', (done) => {
     request.get(`${URL}/cart/str`, (err, res, body) => {
       expect(res.statusCode).to.equal(404);
+      done();
     });
-    done();
   });
 });
