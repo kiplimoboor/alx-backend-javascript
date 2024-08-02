@@ -2,36 +2,37 @@ const { expect } = require('chai');
 const { response } = require('express');
 const request = require('request');
 
+const URL = 'http://localhost:7865';
 describe('Index page', () => {
-  it('correct status code', () => {
-    request('http://localhost:7865', (err, res, body) => {
-      expect(res.statusCode).to.equal(200);
-    });
-  });
-
-  it('correct body', () => {
-    request('http://localhost:7865', (err, res, body) => {
-      expect(body).to.equal('Welcome to the payment system');
+  it('returns correct response', (done) => {
+    request.get(URL, (err, res, body) => {
+      expect(res.statusCode).to.be.equal(200);
+      expect(body).to.be.equal('Welcome to the payment system');
+      done();
     });
   });
 });
 
 describe('Cart page', () => {
-  it('correct 200 code', () => {
-    request('http://localhost:7865/cart/1', (err, res, body) => {
+  it('returns correct response for valid id', (done) => {
+    request.get(`${URL}/cart/693`, (err, res, body) => {
       expect(res.statusCode).to.equal(200);
+      expect(body).to.include('693');
+      done();
     });
   });
 
-  it('correct 404 code', () => {
-    request('http://localhost:7865/cart/str', (err, res, body) => {
+  it('returns a 4040 response for a negative id', (done) => {
+    request.get(`${URL}/cart/-693`, (err, res, body) => {
+      expect(res.statusCode).to.equal(404);
+      done();
+    });
+  });
+
+  it('returns a 404 for a string id', (done) => {
+    request.get(`${URL}/cart/str`, (err, res, body) => {
       expect(res.statusCode).to.equal(404);
     });
-  });
-
-  it('correct message', () => {
-    request('http://localhost:7865/cart/1', (err, res, body) => {
-      expect(body).to.deep.equal('Payment methods for cart 1');
-    });
+    done();
   });
 });
