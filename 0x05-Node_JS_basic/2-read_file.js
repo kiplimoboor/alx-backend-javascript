@@ -1,33 +1,29 @@
-/* eslint-disable array-callback-return */
+/* eslint-disable */
 
 const fs = require('fs');
-function countStudents(filepath) {
+
+function countStudents(path) {
   try {
-    const data = fs
-      .readFileSync(filepath, 'utf8')
-      .toString()
-      .trim()
-      .split('\n')
-      .slice(1);
+    const data = fs.readFileSync(path, 'utf-8');
+    const content = data.trim().split('\n').slice(1);
 
-    console.log('Number of students: ' + data.length);
+    console.log(`Number of students: ${content.length}`);
 
-    const studentsByField = {};
-    data.map((student) => {
-      const studentInfo = student.split(',');
-      const firstName = studentInfo[0];
-      const field = studentInfo.slice(-1);
-      if (field in studentsByField) {
-        studentsByField[field].push(firstName);
+    const groupedStudents = {};
+    content.map((student) => {
+      const studentDetails = student.split(',');
+      const [firstName, course] = [studentDetails[0], studentDetails[3]];
+
+      if (Object.hasOwnProperty.call(groupedStudents, course)) {
+        groupedStudents[course].push(firstName);
       } else {
-        studentsByField[field] = [firstName];
+        groupedStudents[course] = [firstName];
       }
     });
 
-    for (const field in studentsByField) {
-      const students = studentsByField[field];
+    for (const [key, value] of Object.entries(groupedStudents)) {
       console.log(
-        `Number of students in ${field}: ${students.length}. List: ${students.join(', ')}`
+        `Number of students in ${key}: ${value.length}. List: ${value.join(', ')}`
       );
     }
   } catch (err) {
