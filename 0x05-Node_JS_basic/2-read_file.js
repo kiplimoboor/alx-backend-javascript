@@ -4,7 +4,7 @@ const fs = require('fs');
 function countStudents(filepath) {
   try {
     const data = fs
-      .readFileSync(filepath)
+      .readFileSync(filepath, 'utf8')
       .toString()
       .trim()
       .split('\n')
