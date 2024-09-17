@@ -1,9 +1,15 @@
 /* eslint-disable array-callback-return */
 
 const fs = require('fs');
-function countStudents (filepath) {
+function countStudents(filepath) {
   try {
-    const data = fs.readFileSync(filepath).toString().split('\n').slice(1, -1);
+    const data = fs
+      .readFileSync(filepath)
+      .toString()
+      .trim()
+      .split('\n')
+      .slice(1);
+
     console.log('Number of students: ' + data.length);
 
     const studentsByField = {};
