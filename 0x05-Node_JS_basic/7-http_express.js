@@ -1,6 +1,6 @@
-/* eslint-disable */
+/* eslint-disable array-callback-return */
 
-const http = require('http');
+const express = require('express');
 const fs = require('fs');
 
 function countStudents(path) {
@@ -33,24 +33,21 @@ function countStudents(path) {
   });
 }
 
-const app = http
-  .createServer((req, res) => {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    if (req.url === '/') {
-      res.write('Hello Holberton School!');
-      res.end();
-    } else if (req.url === '/students') {
-      res.write('This is the list of our students\n');
-      countStudents(process.argv[2])
-        .then((output) => {
-          res.end(output);
-        })
-        .catch(() => {
-          res.statusCode = 404;
-          res.end('Cannot load the database');
-        });
-    }
-  })
-  .listen(1245);
+const app = express();
 
+app.get('/', (req, res) => {
+  res.send('Hello Holberton School!');
+});
+
+app.get('/students', (req, res) => {
+  countStudents(process.argv[2].toString())
+    .then((output) => {
+      res.send(`This is the list of our students\n${output}`);
+    })
+    .catch(() => {
+      res.send('This is the list of our students\nCannot load the database');
+    });
+});
+
+app.listen(1245);
 module.exports = app;
