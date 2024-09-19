@@ -3,58 +3,58 @@ const calculateNumber = require('./1-calcul');
 
 describe('calculateNumber', () => {
   describe('SUM', () => {
-    it('equal positive numbers', () => {
-      assert.strictEqual(calculateNumber('SUM', 2.0, 2.0), 4);
+    it('adds whole numbers', () => {
+      assert.equal(calculateNumber('SUM', 1, 2), 3);
     });
 
-    it('equal positive numbers (alternate)', () => {
-      assert.strictEqual(calculateNumber('SUM', 2.3, 1.8), 4);
+    it('adds positive and negative numbers', () => {
+      assert.equal(calculateNumber('SUM', -2.6, 5.6), 3);
     });
 
-    it('equal negative numbers', () => {
-      assert.strictEqual(calculateNumber('SUM', -2.0, -2.0), -4);
+    it('rounds up a', () => {
+      assert.equal(calculateNumber('SUM', 1.7, 2.4), 4);
     });
 
-    it('equal negative numbers (alternate)', () => {
-      assert.strictEqual(calculateNumber('SUM', -2.3, -1.8), -4);
+    it('rounds up b', () => {
+      assert.equal(calculateNumber('SUM', 1, 2.7), 4);
     });
 
-    it('negative and positive numbers', () => {
-      assert.strictEqual(calculateNumber('SUM', -2.0, 2.0), 0);
+    it('rounds down both a and b', () => {
+      assert.equal(calculateNumber('SUM', 1.2, 1.2), 2);
     });
 
-    it('positive and negative numbers', () => {
-      assert.strictEqual(calculateNumber('SUM', 2.0, -2.0), 0);
-    });
-
-    it('0 and 0', () => {
-      assert.strictEqual(calculateNumber('SUM', 0.0, 0.0), 0);
+    it('rounds up both a and b', () => {
+      assert.equal(calculateNumber('SUM', 1.5, 2.6), 5);
     });
   });
 
   describe('SUBTRACT', () => {
-    it('subtracts whole numbers', () => {
-      assert.equal(calculateNumber('SUBTRACT', 2, 1), 1);
+    it('equal positive numbers', () => {
+      assert.strictEqual(calculateNumber('SUBTRACT', 2.0, 2.0), 0);
     });
 
-    it('rounds up a', () => {
-      assert.equal(calculateNumber('SUBTRACT', 2.7, 1.3), 2);
+    it('equal positive numbers (alternate)', () => {
+      assert.strictEqual(calculateNumber('SUBTRACT', 2.3, 1.8), 0);
     });
 
-    it('rounds up b', () => {
-      assert.equal(calculateNumber('SUBTRACT', 4, 2.7), 1);
+    it('equal negative numbers', () => {
+      assert.strictEqual(calculateNumber('SUBTRACT', -2.0, -2.0), 0);
     });
 
-    it('subtracts positive and negative numbers', () => {
-      assert.equal(calculateNumber('SUBTRACT', -2.6, 5.6), -9);
+    it('equal negative numbers (alternate)', () => {
+      assert.strictEqual(calculateNumber('SUBTRACT', -2.3, -1.8), 0);
     });
 
-    it('rounds down both a and b', () => {
-      assert.equal(calculateNumber('SUBTRACT', 4.2, 1.2), 3);
+    it('negative and positive numbers', () => {
+      assert.strictEqual(calculateNumber('SUBTRACT', -2.0, 2.0), -4.0);
     });
 
-    it('rounds up both a and b', () => {
-      assert.equal(calculateNumber('SUBTRACT', 4.7, 2.7), 2);
+    it('positive and negative numbers', () => {
+      assert.strictEqual(calculateNumber('SUBTRACT', 2.0, -2.0), 4.0);
+    });
+
+    it('0 and 0', () => {
+      assert.strictEqual(calculateNumber('SUBTRACT', 0.0, 0.0), 0);
     });
   });
 
