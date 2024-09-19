@@ -2,11 +2,31 @@ const assert = require('assert');
 const calculateNumber = require('./0-calcul.js');
 
 describe('calculateNumber', () => {
-  it('sum of 2.5 and 1.2 is 4', () => {
-    assert.equal(calculateNumber(2.5, 1.2), 4);
+  it('calculates whole numbers', () => {
+    assert.strictEqual(calculateNumber(1, 2), 3);
   });
 
-  it('sum of 0.9 and 0.9 is 2', () => {
-    assert.equal(calculateNumber(0.9, 0.9), 3);
+  it('rounds down b', () => {
+    assert.strictEqual(calculateNumber(1, 2.4), 3);
+  });
+
+  it('rounds down a and b', () => {
+    assert.strictEqual(calculateNumber(1.4, 2.4), 3);
+  });
+
+  it('rounds down a', () => {
+    assert.strictEqual(calculateNumber(1.4, 2.0), 3);
+  });
+
+  it('rounds up b', () => {
+    assert.strictEqual(calculateNumber(1.0, 2.5), 4);
+  });
+
+  it('rounds up both a and b', () => {
+    assert.strictEqual(calculateNumber(2.6, 2.5), 6);
+  });
+
+  it('rounds up a', () => {
+    assert.strictEqual(calculateNumber(2.6, 2.0), 5);
   });
 });
