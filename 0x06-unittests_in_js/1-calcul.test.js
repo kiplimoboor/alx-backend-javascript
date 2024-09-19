@@ -7,15 +7,16 @@ describe('calculateNumber', () => {
       assert.equal(calculateNumber('SUM', 1, 2), 3);
     });
 
-    it('rounds down both a and b', () => {
-      assert.equal(calculateNumber('SUM', 1.2, 1.2), 2);
-    });
     it('rounds up a', () => {
-      assert.equal(calculateNumber('SUM', 1.7, 2), 4);
+      assert.equal(calculateNumber('SUM', 1.7, 2.4), 4);
     });
 
     it('rounds up b', () => {
       assert.equal(calculateNumber('SUM', 1, 2.7), 4);
+    });
+
+    it('rounds down both a and b', () => {
+      assert.equal(calculateNumber('SUM', 1.2, 1.2), 2);
     });
 
     it('rounds up both a and b', () => {
@@ -29,7 +30,7 @@ describe('calculateNumber', () => {
     });
 
     it('rounds up a', () => {
-      assert.equal(calculateNumber('SUBTRACT', 2.7, 1), 2);
+      assert.equal(calculateNumber('SUBTRACT', 2.7, 1.3), 2);
     });
 
     it('rounds up b', () => {
