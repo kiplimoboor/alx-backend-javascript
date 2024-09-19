@@ -65,5 +65,9 @@ describe('calculateNumber', () => {
     it('rounds up both a and b', () => {
       assert.equal(calculateNumber('DIVIDE', 4.7, 4.7), 1);
     });
+
+    it('shows an error when b is 0', () => {
+      assert.equal(calculateNumber('DIVIDE', 2.1, 0), 'Error');
+    });
   });
 });
