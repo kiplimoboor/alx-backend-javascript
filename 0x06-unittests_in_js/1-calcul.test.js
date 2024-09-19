@@ -7,6 +7,10 @@ describe('calculateNumber', () => {
       assert.equal(calculateNumber('SUM', 1, 2), 3);
     });
 
+    it('adds positive and negative numbers', () => {
+      assert.equal(calculateNumber('SUM', -2.6, 5.6), 3);
+    });
+
     it('rounds up a', () => {
       assert.equal(calculateNumber('SUM', 1.7, 2.4), 4);
     });
@@ -35,6 +39,10 @@ describe('calculateNumber', () => {
 
     it('rounds up b', () => {
       assert.equal(calculateNumber('SUBTRACT', 4, 2.7), 1);
+    });
+
+    it('subtracts positive and negative numbers', () => {
+      assert.equal(calculateNumber('SUBTRACT', -2.6, 5.6), -9);
     });
 
     it('rounds down both a and b', () => {
