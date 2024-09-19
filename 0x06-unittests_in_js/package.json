@@ -1,0 +1,15 @@
+{
+  "dependencies": {},
+  "name": "0x06-unittests_in_js",
+  "version": "1.0.0",
+  "description": "![img](https://assets.imaginablefutures.com/media/images/ALX_Logo.max-200x150.png)",
+  "main": "0-calcul.js",
+  "devDependencies": {
+    "mocha": "^10.7.3"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC"
+}
