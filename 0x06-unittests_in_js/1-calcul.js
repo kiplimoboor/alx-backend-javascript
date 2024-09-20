@@ -6,7 +6,7 @@ function calculateNumber(type, a, b) {
     case 'SUBTRACT':
       return first - second;
     case 'DIVIDE':
-      if (b == 0) return 'Error';
+      if (second == 0) return 'Error';
       return first / second;
   }
 }

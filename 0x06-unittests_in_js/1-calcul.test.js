@@ -78,5 +78,9 @@ describe('calculateNumber', () => {
     it('shows an error when b is 0', () => {
       assert.equal(calculateNumber('DIVIDE', 2.1, 0), 'Error');
     });
+
+    it('shows an error when b is 0', () => {
+      assert.equal(calculateNumber('DIVIDE', 2.1, 0.2), 'Error');
+    });
   });
 });
