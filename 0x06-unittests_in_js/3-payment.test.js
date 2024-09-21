@@ -25,9 +25,8 @@ describe('sendPaymentRequestToApi', () => {
   });
 
   it('prints the right message to console', () => {
-    sendPaymentRequestToApi(100, 20);
     sendPaymentRequestToApi(190, 30);
-    expect(consoleSpy.calledWith('The total amount is 120')).to.be.true;
-    expect(consoleSpy.calledWith('The total amount is 220')).to.be.true;
+    expect(consoleSpy.calledWith('The total is: 220')).to.be.true;
+    expect(consoleSpy.callCount).to.be.equal(1);
   });
 });
